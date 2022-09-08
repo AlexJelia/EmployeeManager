@@ -7,9 +7,10 @@ import java.util.Arrays;
 /**
  * Array based storage for Resumes
  */
-public class ArrayStorage {
-    private static int size = 0;
-    private Resume[] storage = new Resume[10000];
+public class ArrayStorage implements Storage {
+    private static final int STORAGE_LIMIT = 10000;
+    private int size = 0;
+    private final Resume[] storage = new Resume[STORAGE_LIMIT];
 
     public void clear() {
         Arrays.fill(storage,0,size,null);
@@ -29,7 +30,7 @@ public class ArrayStorage {
         int index = getIndex(r.getUuid());
         if(index != -1){
             System.out.println("Resume " + r.getUuid() + " already exist");
-        }else if(storage.length == size){
+        }else if(STORAGE_LIMIT == size){
             System.out.println("Storage overflowed");
         }else if(r.getUuid() != null){
             storage[size] = r;
