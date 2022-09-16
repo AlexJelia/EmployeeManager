@@ -6,6 +6,7 @@ package alex.jelia.empmanager;
 import alex.jelia.empmanager.webapp.exception.NotExistStorageException;
 import alex.jelia.empmanager.webapp.model.Resume;
 import alex.jelia.empmanager.webapp.storage.SortedArrayStorage;
+import alex.jelia.empmanager.webapp.storage.ArrayStorage;
 import alex.jelia.empmanager.webapp.storage.Storage;
 
 public class MainTestArrayStorage {
