@@ -6,6 +6,7 @@ import alex.jelia.empmanager.webapp.exception.StorageException;
 import alex.jelia.empmanager.webapp.model.Resume;
 
 import java.util.Arrays;
+import java.util.List;
 
 public abstract class AbstractArrayStorage extends AbstractStorage {
     protected static final int STORAGE_LIMIT = 10000;
@@ -17,52 +18,41 @@ public abstract class AbstractArrayStorage extends AbstractStorage {
         size = 0;
     }
 
-    public void update(Resume r) {
-        int index = getIndex(r.getUuid());
-        if (index < 0) {
-            throw new NotExistStorageException(r.getUuid());
-        } else {
-            storage[index] = r;
-        }
+    @Override
+    protected void doUpdate(Resume r, Object index) {
+        storage[(Integer) index] = r;
     }
 
+    @Override
+    protected boolean isExist(Object index) {
+        return (Integer) index >= 0;
+    }
 
-    public void save(Resume r) {
-        int index = getIndex(r.getUuid());
-        if (index >= 0) {
-            throw new ExistStorageException(r.getUuid());
-        } else if (size == STORAGE_LIMIT) {
+    @Override
+    protected void doSave(Resume r, Object index) {
+        if (size == STORAGE_LIMIT) {
             throw new StorageException("Storage overflowed", r.getUuid());
-        } else if (r.getUuid() != null) {
-            insertElement(r, index);
+        } else {
+            insertElement(r, (Integer) index);
             size++;
-        } else {
-            throw new NotExistStorageException(r.getUuid());
         }
     }
 
-    public Resume get(String uuid) {
-        int index = getIndex(uuid);
-        if (index < 0) {
-            throw new NotExistStorageException(uuid);
-        }
-        return storage[index];
+    @Override
+    protected Resume doGet(Object index) {
+        return storage[(Integer) index];
     }
 
-    public void delete(String uuid) {
-        int index = getIndex(uuid);
-        if (index < 0) {
-            throw new NotExistStorageException(uuid);
-        } else {
-            fillDeletedElement(index);
-            storage[size - 1] = null;
-            size--;
-        }
+    @Override
+    protected void doDelete(Object index) {
+        fillDeletedElement((Integer) index);
+        storage[size - 1] = null;
+        size--;
     }
 
-
-    public Resume[] getAll() {
-        return Arrays.copyOfRange(storage, 0, size);
+    @Override
+    public List<Resume> doCopyAll() {
+        return Arrays.asList(Arrays.copyOfRange(storage, 0, size));
     }
 
     public int size() {
@@ -73,5 +63,5 @@ public abstract class AbstractArrayStorage extends AbstractStorage {
 
     protected abstract void insertElement(Resume r, int index);
 
-    protected abstract int getIndex(String uuid);
+    protected abstract Integer getSearchKey(String uuid);
 }

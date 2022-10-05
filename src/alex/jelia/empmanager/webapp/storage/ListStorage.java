@@ -3,39 +3,61 @@ package alex.jelia.empmanager.webapp.storage;
 import alex.jelia.empmanager.webapp.model.Resume;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
-public class ListStorage extends AbstractStorage{
-
-    protected final ArrayList<Resume> storage = new ArrayList<Resume>();
-
-    @Override
-    public void update(Resume r) {
-
-    }
+public class ListStorage extends AbstractStorage {
+    private List<Resume> list = new ArrayList<>();
 
     @Override
-    public void save(Resume r) {
-
-    }
-
-    @Override
-    public Resume get(String uuid) {
+    protected Integer getSearchKey(String uuid) {
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getUuid().equals(uuid)) {
+                return i;
+            }
+        }
         return null;
     }
 
     @Override
-    public void delete(String uuid) {
-
+    protected void doUpdate(Resume r, Object searchKey) {
+        list.set((Integer) searchKey, r);
     }
 
     @Override
-    public Resume[] getAll() {
-        return new Resume[0];
+    protected boolean isExist(Object searchKey) {
+        return searchKey != null;
     }
+
+    @Override
+    protected void doSave(Resume r, Object searchKey) {
+        list.add(r);
+    }
+
+    @Override
+    protected Resume doGet(Object searchKey) {
+        return list.get((Integer) searchKey);
+    }
+
+    @Override
+    protected void doDelete(Object searchKey) {
+        list.remove(((Integer) searchKey).intValue());
+    }
+
+    @Override
+    public void clear() {
+        list.clear();
+    }
+
+    @Override
+    public List<Resume> doCopyAll() {
+        return new ArrayList<>(list);
+    }
+
 
     @Override
     public int size() {
-        return 0;
+        return list.size();
     }
 }

@@ -2,6 +2,8 @@ package alex.jelia.empmanager.webapp.storage;
 
 import alex.jelia.empmanager.webapp.model.Resume;
 
+import java.util.List;
+
 public interface Storage {
 
     void clear();
@@ -9,7 +11,9 @@ public interface Storage {
     void save(Resume r);
     Resume get(String uuid);
     void delete(String uuid);
-    Resume[] getAll();
+
+    //Sorted by name
+    List<Resume> getAllSorted();
     int size();
 
 }

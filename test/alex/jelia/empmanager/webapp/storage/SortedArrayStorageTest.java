@@ -1,9 +1,7 @@
 package alex.jelia.empmanager.webapp.storage;
 
-import static org.junit.Assert.*;
-
 public class SortedArrayStorageTest extends AbstractArrayStorageTest {
-    public SortedArrayStorageTest(){
+    public SortedArrayStorageTest() {
         super(new SortedArrayStorage());
     }
 
