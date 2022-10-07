@@ -39,6 +39,15 @@ public class Resume {
         return sections.get(type);
     }
 
+    public void addContact(ContactType type, String value) {
+        contacts.put(type, value);
+    }
+
+    public void addSection(SectionType type, Section section) {
+        sections.put(type, section);
+    }
+
+
     @Override
     public String toString() {
         return uuid + '(' + fullName + ')';
