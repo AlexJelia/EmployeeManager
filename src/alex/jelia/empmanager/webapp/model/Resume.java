@@ -1,15 +1,16 @@
 package alex.jelia.empmanager.webapp.model;
 
+import java.io.Serializable;
 import java.util.EnumMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
 
-public class Resume {
-
+public class Resume implements Serializable {
+    private static final long serialVersionUID = 1L;
     private final String uuid;
     private final String fullName;
-    private final Map<ContactType,String > contacts = new EnumMap<>(ContactType.class);
+    private final Map<ContactType, String> contacts = new EnumMap<>(ContactType.class);
     private final Map<SectionType, Section> sections = new EnumMap<>(SectionType.class);
 
     public Resume(String fullName) {
@@ -31,11 +32,11 @@ public class Resume {
         return fullName;
     }
 
-    public String getContact(ContactType type){
+    public String getContact(ContactType type) {
         return contacts.get(type);
     }
 
-    public Section getSection(SectionType type){
+    public Section getSection(SectionType type) {
         return sections.get(type);
     }
 
