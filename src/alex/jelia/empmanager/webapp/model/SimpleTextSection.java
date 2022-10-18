@@ -2,7 +2,10 @@ package alex.jelia.empmanager.webapp.model;
 
 public class SimpleTextSection extends Section{
     private static final long serialVersionUID = 1L;
-    private final String content;
+    private String content;
+
+    public SimpleTextSection() {
+    }
 
     public SimpleTextSection(String content) {
         this.content = content;
