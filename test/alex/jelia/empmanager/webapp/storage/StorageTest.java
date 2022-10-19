@@ -1,5 +1,6 @@
 package alex.jelia.empmanager.webapp.storage;
 
+import alex.jelia.empmanager.webapp.storage.serializer.JsonStreamSerializer;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
@@ -14,6 +15,7 @@ import org.junit.runners.Suite;
                 ObjectFileStorageTest.class,
                 ObjectPathStorageTest.class,
                 XmlPathStorageTest.class,
+                JsonPathStorageTest.class,
         })
 public class StorageTest {
 }

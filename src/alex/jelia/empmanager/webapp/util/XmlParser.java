@@ -11,7 +11,7 @@ public class XmlParser {
     public XmlParser(Class...classesToBeBound){
         try{
             JAXBContext context = JAXBContext.newInstance(classesToBeBound);
-            //todo проверить properties
+
             marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             marshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
