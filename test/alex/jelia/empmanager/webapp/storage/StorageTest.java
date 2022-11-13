@@ -1,6 +1,5 @@
 package alex.jelia.empmanager.webapp.storage;
 
-import alex.jelia.empmanager.webapp.storage.serializer.JsonStreamSerializer;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
