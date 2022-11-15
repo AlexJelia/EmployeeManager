@@ -3,6 +3,6 @@ import alex.jelia.empmanager.webapp.storage.serializer.JsonStreamSerializer;
 
 public class JsonPathStorageTest extends AbstractStorageTest {
     public JsonPathStorageTest() {
-        super(new PathStorage(STORAGE_DIR.getAbsolutePath(), new JsonStreamSerializer()));
+        super(new PathStorage(RESOURCES_DIR.getAbsolutePath(), new JsonStreamSerializer()));
     }
 }

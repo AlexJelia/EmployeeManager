@@ -1,5 +1,6 @@
 package alex.jelia.empmanager.webapp.storage;
 
+import alex.jelia.empmanager.webapp.Config;
 import alex.jelia.empmanager.webapp.exception.ExistStorageException;
 import alex.jelia.empmanager.webapp.exception.NotExistStorageException;
 import alex.jelia.empmanager.webapp.model.*;
@@ -14,8 +15,8 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public abstract class AbstractStorageTest {
-    protected static final File STORAGE_DIR = new File("C:\\Users\\alik1\\IdeaProjects\\" +
-            "EmployeeManager\\resources");
+    protected static final File RESOURCES_DIR = new File("C:\\Users\\alik1\\IdeaProjects\\EmployeeManager\\resources");
+    protected static final File STORAGE_DIR = Config.get().getStorageDir();
     protected Storage storage;
 
     private static final String UUID_1 = "uuid1";
@@ -34,7 +35,7 @@ public abstract class AbstractStorageTest {
         R3 = new Resume(UUID_3, "Name3");
         R4 = new Resume(UUID_4, "Name4");
 
-        R1.addContact(ContactType.MAIL, "mail1@ya.ru");
+       /* R1.addContact(ContactType.MAIL, "mail1@ya.ru");
         R1.addContact(ContactType.PHONE, "11111");
         R1.addSection(SectionType.OBJECTIVE, new SimpleTextSection("Objective1"));
         R1.addSection(SectionType.PERSONAL, new SimpleTextSection("Personal data"));
@@ -56,7 +57,7 @@ public abstract class AbstractStorageTest {
         R1.addSection(SectionType.EXPERIENCE,
                 new OrganizationsSection(
                         new Organization("Organization2", "http://Organization2.ru",
-                                new Organization.Position(2015, Month.JANUARY, "position1", "content1"))));
+                                new Organization.Position(2015, Month.JANUARY, "position1", "content1"))));*/
     }
 
     public AbstractStorageTest(Storage storage) {
