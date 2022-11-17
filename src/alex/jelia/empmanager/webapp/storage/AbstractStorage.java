@@ -4,7 +4,7 @@ import alex.jelia.empmanager.webapp.exception.ExistStorageException;
 import alex.jelia.empmanager.webapp.exception.NotExistStorageException;
 import alex.jelia.empmanager.webapp.model.Resume;
 
-import java.util.Comparator;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -72,11 +72,7 @@ public abstract class AbstractStorage<SK> implements Storage {
     public List<Resume> getAllSorted() {
         LOG.info("getAllSorted");
         List<Resume> list = doCopyAll();
-        Comparator<Resume> comparator = (a, b) -> {
-            int comp = a.getFullName().compareTo(b.getFullName());
-            return comp != 0 ? comp : a.getUuid().compareTo(b.getUuid());
-        };
-        list.sort(comparator);
+        Collections.sort(list);
         return list;
     }
 }
