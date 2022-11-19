@@ -12,6 +12,11 @@ public class DataBaseStorage implements Storage {
     public final DBHelper helper;
 
     public DataBaseStorage(String dbUrl, String dbUser, String dbPassword) {
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new IllegalStateException(e);
+        }
         helper = new DBHelper(() -> DriverManager.getConnection(dbUrl, dbUser, dbPassword));
     }
 
