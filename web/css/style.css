@@ -39,6 +39,7 @@ li {
 }
 
 a[href^="skype:"] {
+    color: #EF7D55;
     padding-left: 20px !important;
 }
 
@@ -60,4 +61,17 @@ a[href^="https://www.linkedin.com"] {
 a[href*="github."] {
     padding-left: 20px !important;
 
+}
+
+a:link {
+    color: #497DDD;
+}
+a:visited {
+    color: #EF7D55;
+}
+a:hover {
+    color: #154088;
+}
+a:active {
+    color: #497DDD;
 }

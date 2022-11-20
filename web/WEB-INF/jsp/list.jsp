@@ -1,4 +1,5 @@
 <%@ page import="alex.jelia.empmanager.webapp.model.ContactType" %>
+<%@ page import="alex.jelia.empmanager.webapp.model.Resume" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -21,10 +22,11 @@
             <tr>
                 <td><a href="resume?uuid=${resume.uuid}&action=view">${resume.fullName}</a></td>
                 <td><%=ContactType.MAIL.toHtml(resume.getContact(ContactType.MAIL))%></td>
-                <td><a href="resume?uuid=${resume.uuid}&action=delete">Delete</a></td>
+                <td><a href="resume?uuid=${resume.uuid}&action=delete"><img src="img/delete.png"></a></td>
                 <td><a href="resume?uuid=${resume.uuid}&action=edit"><img src="img/pencil.png"></a></td>
             </tr>
         </c:forEach>
+        <a href="resume?uuid=new&action=add">Add</a>
     </table>
 </section>
 <jsp:include page="prepared/footer.jsp"/>

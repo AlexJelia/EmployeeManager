@@ -40,10 +40,17 @@ public class ResumeServlet extends HttpServlet {
             case "edit":
                 r = storage.get(uuid);
                 break;
+            //todo edit.jsp and add.jsp have same functionality
+            case "add":
+                r = new Resume(" ");
+                storage.save(r);
+                request.setAttribute("resume", r);
+                request.getRequestDispatcher("/WEB-INF/jsp/edit.jsp").forward(request, response);
+                return;
             default:
                 throw new IllegalArgumentException("Action " + action + " is illegal");
         }
-        request.setAttribute("resume",r);
+        request.setAttribute("resume", r);
         request.getRequestDispatcher(
                 ("view".equals(action) ? "/WEB-INF/jsp/view.jsp" : "/WEB-INF/jsp/edit.jsp")
         ).forward(request, response);
