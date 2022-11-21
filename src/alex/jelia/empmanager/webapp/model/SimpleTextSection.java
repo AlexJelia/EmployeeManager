@@ -3,6 +3,7 @@ package alex.jelia.empmanager.webapp.model;
 public class SimpleTextSection extends Section{
     private static final long serialVersionUID = 1L;
     private String content;
+    public static final SimpleTextSection EMPTY = new SimpleTextSection("");
 
     public SimpleTextSection() {
     }
