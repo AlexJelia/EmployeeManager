@@ -1,77 +1,231 @@
-header {
-    background: none repeat scroll 0 0 	#000080	;
-    color: 		#FFFFFF;
-    font-size: 20px;
-    padding: 5px 20px;
-}
-
-footer {
-    background: none repeat scroll 0 0 	#000080	;
-    color: 		#FFFFFF;
-    font-size: 20px;
-    padding: 5px 20px;
-    margin: 20px 0;
-}
-
-dl {
-    background: none repeat scroll 0 0 #FAFAFA;
-    margin: 8px 0;
+body {
+    margin: 0;
     padding: 0;
+    overflow: hidden;
+    background: var(--body-background);
 }
 
-dt {
+.header {
+    height: 100px;
+    width: 100%;
+    background: var(--header-background);
+}
+
+.header .arrow:hover {
+    color: transparent;
+    text-decoration: none;
+}
+
+.header .resumes-control-title {
+    margin-left: 16px;
+
+    font-family: Open Sans, serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+
+    color: var(--header-text-color);
+}
+
+.header .github-icon {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    margin: 35px 0 0 25%;
+    background: var(--header-arrow-background);
     display: inline-block;
-    width: 170px;
+    text-align: center;
 }
 
-dd {
-    display: inline-block;
-    margin-left: 8px;
-    vertical-align: top;
+.header .arrow-dot img {
+    width: 12px;
+    margin-top: 9px;
+    margin-left: -2px;
 }
 
-h2, h3 {
-    margin: 15px 0 5px;
+.footer {
+    height: 100px;
+    width: 100%;
+
+    position:absolute;
+    bottom:0;
+
+    font-family: Open Sans, serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+
+    display: table;
+
+    color: var(--footer-text-color);
+    background: var(--header-background);
 }
 
-li {
-    margin: 15px 0;
+.footer a {
+    display:table-cell;
+    vertical-align:middle;
 }
 
-a[href^="skype:"] {
-    color: #EF7D55;
-    padding-left: 20px !important;
+a {
+    text-decoration: none;
 }
 
-a[href^="mailto:"] {
-    padding-left: 20px !important;
-
+.footer div {
+    width: 100%;
+    text-align: center;
 }
 
-a[href^="https://stackoverflow.com"] {
-    padding-left: 20px !important;
-
+.scrollable-panel {
+    height: calc(100vh - 200px);
+    width: 100%;
+    margin: 0;
+    overflow: auto;
 }
 
-a[href^="https://www.linkedin.com"] {
-    padding-left: 20px !important;
-
+.text-anchor {
+    text-decoration: none;
 }
 
-a[href*="github."] {
-    padding-left: 20px !important;
-
+.text-anchor:hover {
+    opacity: 0.8;
+    color: var(--anchor-color);
+    text-decoration: underline;
 }
 
-a:link {
-    color: #497DDD;
+.no-underline-anchor {
+    text-decoration: none;
 }
-a:visited {
-    color: #EF7D55;
+
+.no-underline-anchor:hover {
+    opacity: 0.8;
 }
-a:hover {
-    color: #154088;
+
+:root {
+    --header-background: #EDEFF2;
+    --header-text-color: #4A586E;
+    --header-arrow-background: #FFFFFF;
+    --footer-text-color: #4A586E;
+    --footer-anchor-color: #4A586E;
+    --anchor-color: #4A586E;
+    --text-color: #4A586E;
+    --add-resume-text-color: #4A586E;
+    --body-background: #FFFFFF;
+    --table-header-text-color: #4A586E;
+    --table-header-background: #E0E4EA;
+    --table-text-color: #F8F9FA;
+    --table-odd-row-background: #ECEEF2;
+    --table-even-row-background: #F8F9FA;
+    --table-shadow-color: none;
+    --input-field-background: #F8F9FA;
+    --input-field-shadow: #E0E4EA;
+    --spacer-background: #E0E4EA;
+    --submit-button-color: #319848;
+    --submit-button-background: #FFFFFF;
+    --save-button-background: #319848;
+    --cancel-button-color: #B7616A;
+    --button-text-color: #F8F9FA;
+    --theme-text-color: #4A586E;
+    --contact-link-color: #169FE1;
 }
-a:active {
-    color: #497DDD;
+
+.form-wrapper {
+    font-family: Open Sans, serif;
+    font-style: normal;
+    font-weight: 600;
+    color: var(--text-color);
+
+    height: 100%;
+    min-width: 610px;
+    width: 50%;
+    margin: 0 0 0 25%;
+    display: block;
+}
+
+.full-name {
+    font-size: 32px;
+    line-height: 44px;
+    margin-top: 40px;
+}
+
+.contacts {
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 30px;
+    margin-top: 21px;
+}
+
+.section-wrapper {
+    margin-bottom: 83px;
+}
+
+.spacer {
+    width: 100%;
+    min-width: calc(100% + 50px);
+    height: 2px;
+    margin: 43px 0 77px 0;
+
+    background: var(--spacer-background);
+    border-radius: 10px;
+}
+
+.section {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 33px;
+    margin: 40px 0 24px 0;
+}
+
+.position {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 25px;
+}
+
+.qualities {
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 25px;
+}
+
+.list {
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 25px;
+}
+
+.job-name {
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 30px;
+    margin-left: 207px;
+}
+
+.period-position {
+    display: flex;
+    margin-top: 10px;
+}
+
+.period {
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 25px;
+    min-width: 207px;
+}
+
+.position {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 25px;
+}
+
+.description {
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 25px;
+    margin: 35px 0 0 207px;
+}
+
+.footer-spacer {
+    height: 10px;
 }

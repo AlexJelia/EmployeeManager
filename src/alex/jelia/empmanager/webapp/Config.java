@@ -24,7 +24,7 @@ public class Config {
             storageDir = new File(props.getProperty("storage.dir"));
             storage = new DataBaseStorage(props.getProperty("db.url"), props.getProperty("db.user"), props.getProperty("db.password"));
         } catch (IOException e) {
-            throw new IllegalStateException("Invalid config file " + PROPS.getAbsolutePath());
+            throw new IllegalStateException("Invalid config file " + PROPS/*.getAbsolutePath()*/);
         }
     }
 
